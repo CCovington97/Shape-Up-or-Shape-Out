@@ -1,0 +1,66 @@
+div#forms {
+    height: 100px;
+    width: 900px;
+    display: flex;
+    justify-content: space-around;
+}
+
+div.stuff{
+    display: flex;
+    margin-top: 30px;
+}
+
+div#shapes {
+    height: 600px;
+    width: 600px;
+    background-color: blue;
+}
+
+div#information {
+    background-color: aqua;
+    height: 600px;
+    width: 200px;
+    margin-left: 100px;
+}
+
+
+form {
+    border: 2px solid black;
+    text-align: center;
+}
+
+div#information h2 {
+    margin: none;
+    text-align: center;
+}
+
+#square {
+    background-color: red;
+    height: 5em;
+    width: 5em;
+    display: none;
+}
+
+#rectangle {
+    background-color: green;
+    height: 5em;
+    width: 10em;
+    display: none;
+}
+
+#circle {
+    background-color: violet;
+    height: 6em;
+    width: 6em;
+    /* this means it has a radius of 3em */
+    border-radius: 50%;
+    display: none;
+}
+
+#triangle-bottomleft {
+    width: 0;
+    height: 0;
+    border-right: 5em solid transparent;
+    border-bottom: 5em solid yellow;
+    display: none;
+}

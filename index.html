@@ -7,9 +7,57 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-
+    <div id='forms'>
+        <form id="sqr-form">
+            <input type="button" value="Square" class="button" id="sqr-btn">
+            <br> Side Length: <br>
+            <input type="number" name="side length" placeholder="Side Length" id="sqr-side">
+            <br>
+        </form>
+        <form id="rct-form">
+            <input type="button" value="Rectangle" class="button" id="rct-btn">
+            <br> Height: <br>
+            <input type="number" name="height" placeholder="Height" id="rct-height">
+            <br>
+            Width: <br>
+            <input type="number" name="width" placeholder="Width" id="rct-width">
+            <br>
+        </form>
+        <form id="cir-form">
+            <input type="button" value="Circle" class="button" id="cir-btn">
+            <br> Radius: <br>
+            <input type="number" name="radius" placeholder="Radius" id="cir-rad">
+            <br>
+        </form>
+        <form id="tri-form">
+            <input type="button" value="Triangle" class="button" id="tri-btn">
+            <br> Height: <br>
+            <input type="number" name="height" placeholder="Height" id="tri-height">
+            <br>
+        </form>
+    </div>
+    <div class='stuff'>
+        <div id='shapes'>
+            I'm Blue
+            <div id="square"></div>
+            <div id="rectangle"></div>
+            <div id="circle"></div>
+            <div id="triangle-bottomleft"></div>
+        </div>
+        <div id="information">
+            <h2>Information</h2>
+            This will be Shape
+            This will be Height
+            This will be Width
+            This will be Area
+            This will be Perimeter
+            This will be Radius
+        </div>
+    </div>
+        
     <!-- JS Dependencies -->
+    <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
