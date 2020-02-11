@@ -1,103 +1,111 @@
 const body = document.body
-const shapes = $('#shapes')
+const shapeContainer = $('#shape-container')
 const forms = $('#forms')
-const sqrBtn = $('#sqr-btn')
-const rctBtn = $('#rct-btn')
-const cirBtn = $('#cir-btn')
-const triBtn = $('#tri-btn')
 const MAX = 600
-// const square = $('#square')
-// const rectangle = $('#rectangle')
-// const circle = $('#circle')
-// const triangle = $('#triangle-bottomleft')
 
 class Shapes {
-    constructor(shapeName, x, y, height, area, perimeter) {
-        this.shapeName = shapeName
-        this.shape = $('<div class="shapes"></div>')
-        this.shape.style.left = `${x}px`
-        this.shape.style.top = `${y}px`
-        this.height = height
-        this.area = area
-        this.perimeter = perimeter
-        let height
+    constructor(x, y) {
+        this.shape = $("<div class='shape'></div>")
+        this.shape.css({
+            'left': `${x}px`,
+            'top': `${y}px`
+        })
     }
 }
 
 class Square extends Shapes {
-    constructor() {
-        super()
+    constructor(x, y, sqrSide) {
+        super(x, y);
+        this.shape.addClass('square');
+        this.shape.css({
+            'height': `${sqrSide}px`,
+            'width': `${sqrSide}px`,
+            'display': 'inherit'
+        })
+        shapeContainer.append(this.shape);
     }
-
 }
-
-sqrBtn.click(() => {
-    let sqrSide = $('#sqr-side').val()
-    console.log('sqr side', sqrSide)
-    // $(square).css({
-    //     'height': `${sqrSide}em`,
-    //     'width': `${sqrSide}em`,
-    //     'display': 'inherit'
-    // })
-})
 
 class Rectangle extends Shapes {
-    constructor() {
-        super()
+    constructor(x, y, rctHeight, rctWidth) {
+        super(x, y)
+        this.shape.addClass('rectangle')
+        this.shape.css({
+            'height': `${rctHeight}px`,
+            'width': `${rctWidth}px`,
+            'display': 'inherit'
+        })
+        shapeContainer.append(this.shape)
     }
 }
 
-rctBtn.click(() => {
-    let rctHeight = $('#rct-height').val()
-    console.log('rct height', rctHeight)
-    let rctWidth = $('#rct-width').val()
-    console.log('rct width', rctWidth)
-    // $(rectangle).css({
-    //     'height': `${rctHeight}em`,
-    //     'width': `${rctWidth}em`,
-    //     'display': 'inherit'
-    // })
-})
-
-cirBtn.click(() => {
-    let xPos = randomVal()
-    let yPos = randomVal()
-    let cirRadius = $('#cir-rad').val()
-    // const newCircle = $('#cir-rad').val()
-    // console.log('cir radius', cirRadius)
-    // $(circle).css({
-    //     'height': `${cirRadius * 2}em`,
-    //     'width': `${cirRadius * 2}em`,
-    //     'display': 'inherit'
-    // })
-})
 class Circle extends Shapes {
-    constructor(shapeName, x, y, height, width, radius, area, perimeter) {
-        super(shapeName, x, y, height, area, perimeter);
-        this.shapeName = 'Circle';
-        this.width = 2 * this.height;
-        this.radius = this.height;
-        area = Math.PI * this.radius * this.radius;
-        this.perimeter = Math.PI * 2 * this.radius;
+    constructor(x, y, cirRadius) {
+        super(x, y)
+        this.shape.addClass('circle')
+        this.shape.css({
+            'height': `${cirRadius * 2}px`, // this should be multiplied by 2 because this is actually the diameter.
+            'width': `${cirRadius * 2}px`, // this should be multiplied by 2 because this is actually the diameter.
+            'display': 'inherit'
+        })
+        shapeContainer.append(this.shape)
     }
 }
 
 class Triangle extends Shapes {
-    constructor() {
-        super()
+    constructor(x, y, triHeight) {
+        super(x, y)
+        this.shape.addClass('triangle')
+        this.shape.css({
+            'border-right': `${triHeight}px solid transparent`,
+            'border-bottom': `${triHeight}px solid yellow`,
+            'display': 'inherit'
+        })
+        shapeContainer.append(this.shape)
     }
 }
 
-triBtn.click(() => {
-    let triHeight = $('#tri-height').val()
-    console.log('tri height', triHeight)
-    // $(triangle).css({
-    //     'border-right': `${triHeight}em solid transparent`,
-    //     'border-bottom': `${triHeight}em solid yellow`,
-    //     'display': 'inherit'
-    // })
+const sqrBtn = $('#sqr-btn')
+sqrBtn.click(() => {
+    let sqrSide = Number($('#sqr-side').val())
+    let xVal = randomVal(0, MAX - sqrSide)
+    let yVal = randomVal(0, MAX - sqrSide)
+    let sqr = new Square(xVal, yVal, sqrSide)
+    console.log('sqr button clicked')
+
 })
 
-function randomVal() {
-    return Math.floor(Math.random() * Math.floor(600))
+const rctBtn = $('#rct-btn')
+rctBtn.click(() => {
+    let rctHeight = Number($('#rct-height').val())
+    let rctWidth = Number($('#rct-width').val())
+    let xVal = randomVal(0, MAX - rctWidth)
+    let yVal = randomVal(0, MAX - rctHeight)
+    let rct = new Rectangle(xVal, yVal, rctHeight, rctWidth)
+    console.log('rct button clicked')
+    console.log(rct)
+})
+
+const cirBtn = $('#cir-btn')
+cirBtn.click(() => {
+    let cirRadius = Number($('#cir-rad').val())
+    let xVal = randomVal(0, MAX - cirRadius * 2)
+    let yVal = randomVal(0, MAX - cirRadius * 2)
+    let cir = new Circle(xVal, yVal, cirRadius)
+    console.log('cir button clicked')
+    console.log(cir)
+})
+
+const triBtn = $('#tri-btn')
+triBtn.click(() => {
+    let triHeight = Number($('#tri-height').val())
+    let xVal = randomVal(0, MAX - triHeight)
+    let yVal = randomVal(0, MAX - triHeight)
+    let tri = new Triangle(xVal, yVal, triHeight)
+    console.log('tri button clicked')
+    console.log(tri)
+})
+
+function randomVal(min, max) {
+    return Math.floor(Math.random() * (max - min));
 }

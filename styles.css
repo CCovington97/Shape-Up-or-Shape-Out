@@ -10,10 +10,11 @@ div.stuff{
     margin-top: 30px;
 }
 
-div#shapes {
+div#shape-container {
     height: 600px;
     width: 600px;
     background-color: blue;
+    position: relative;
 }
 
 div#information {
@@ -35,33 +36,37 @@ div#information h2 {
     text-align: center;
 }
 
-#square {
+.square {
     background-color: red;
-    height: 5em;
-    width: 5em;
+    height: 5px;
+    width: 5px;
     display: none;
+    position: absolute;
 }
 
-#rectangle {
+.rectangle {
     background-color: green;
-    height: 5em;
-    width: 10em;
+    height: 5px;
+    width: 10px;
     display: none;
+    position: absolute;
 }
 
-#circle {
+.circle {
     background-color: violet;
-    height: 6em;
-    width: 6em;
-    /* this means it has a radius of 3em */
+    height: 6px;
+    width: 6px;
+    /* this means it has a radius of 3px */
     border-radius: 50%;
     display: none;
+    position: absolute;
 }
 
-#triangle-bottomleft {
+.triangle {
     width: 0;
     height: 0;
-    border-right: 5em solid transparent;
-    border-bottom: 5em solid yellow;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid yellow;
     display: none;
+    position: absolute;
 }
