@@ -21,6 +21,7 @@ div#information {
     height: 600px;
     width: 200px;
     margin-left: 100px;
+    justify-content: center;
 }
 
 
