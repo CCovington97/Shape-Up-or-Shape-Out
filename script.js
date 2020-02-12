@@ -70,8 +70,13 @@ sqrBtn.click(() => {
     let sqrSide = Number($('#sqr-side').val())
     let xVal = randomVal(0, MAX - sqrSide)
     let yVal = randomVal(0, MAX - sqrSide)
-    let sqr = new Square(xVal, yVal, sqrSide)
-    console.log('sqr button clicked')
+    if (sqrSide <= 0) {
+        alert('Please put a positive number.')
+    } else {
+        let sqr = new Square(xVal, yVal, sqrSide)
+        console.log('sqr button clicked')
+        console.log(sqr)
+    }
 
 })
 
@@ -81,9 +86,15 @@ rctBtn.click(() => {
     let rctWidth = Number($('#rct-width').val())
     let xVal = randomVal(0, MAX - rctWidth)
     let yVal = randomVal(0, MAX - rctHeight)
-    let rct = new Rectangle(xVal, yVal, rctHeight, rctWidth)
-    console.log('rct button clicked')
-    console.log(rct)
+    if (rctHeight === rctWidth) {
+        alert('This is a sqaure!')
+    } else if (rctHeight <= 0 || rctWidth <= 0) {
+        alert('Please put a positive number.')
+    } else {
+        let rct = new Rectangle(xVal, yVal, rctHeight, rctWidth)
+        console.log('rct button clicked')
+        console.log(rct)
+    }
 })
 
 const cirBtn = $('#cir-btn')
@@ -91,9 +102,13 @@ cirBtn.click(() => {
     let cirRadius = Number($('#cir-rad').val())
     let xVal = randomVal(0, MAX - cirRadius * 2)
     let yVal = randomVal(0, MAX - cirRadius * 2)
-    let cir = new Circle(xVal, yVal, cirRadius)
-    console.log('cir button clicked')
-    console.log(cir)
+    if (cirRadius <= 0) {
+        alert('Please put a positive number.')
+    } else {
+        let cir = new Circle(xVal, yVal, cirRadius)
+        console.log('cir button clicked')
+        console.log(cir)
+    }
 })
 
 const triBtn = $('#tri-btn')
@@ -101,11 +116,16 @@ triBtn.click(() => {
     let triHeight = Number($('#tri-height').val())
     let xVal = randomVal(0, MAX - triHeight)
     let yVal = randomVal(0, MAX - triHeight)
-    let tri = new Triangle(xVal, yVal, triHeight)
-    console.log('tri button clicked')
-    console.log(tri)
+    if (triHeight <= 0) {
+        alert('Please put a positive number.')
+    } else {
+        let tri = new Triangle(xVal, yVal, triHeight)
+        console.log('tri button clicked')
+        console.log(tri)
+    }
 })
 
 function randomVal(min, max) {
     return Math.floor(Math.random() * (max - min));
 }
+

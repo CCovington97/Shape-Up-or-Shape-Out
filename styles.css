@@ -15,6 +15,7 @@ div#shape-container {
     width: 600px;
     background-color: blue;
     position: relative;
+    border: 2px solid black;
 }
 
 div#information {
@@ -23,6 +24,7 @@ div#information {
     width: 200px;
     margin-left: 100px;
     justify-content: center;
+    border: 2px solid black;
 }
 
 
