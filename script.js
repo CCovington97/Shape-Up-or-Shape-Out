@@ -2,6 +2,12 @@ const body = document.body
 const shapeContainer = $('#shape-container')
 const forms = $('#forms')
 const MAX = 600
+let shapeName = $('#shape-name')
+let shapeWidth = $('#shape-width')
+let shapeHeight = $('#shape-height')
+let shapeRadius = $('#shape-radius')
+let shapeArea = $('#shape-area')
+let shapePerimeter = $('#shape-perimeter')
 
 class Shapes {
     constructor(x, y) {
@@ -10,6 +16,7 @@ class Shapes {
             'left': `${x}px`,
             'top': `${y}px`
         })
+        this.shape.click(() => this.describe())
     }
 }
 
@@ -37,6 +44,7 @@ class Rectangle extends Shapes {
         })
         shapeContainer.append(this.shape)
     }
+
 }
 
 class Circle extends Shapes {
@@ -77,7 +85,12 @@ sqrBtn.click(() => {
         console.log('sqr button clicked')
         console.log(sqr)
     }
-
+    $(shapeName).val('Shape: Square')
+    $(shapeHeight).val(`Height: ${sqrSide}`)
+    $(shapeWidth).val(`Width: ${sqrSide}`)
+    $(shapeRadius).val(`Radius: NaN`)
+    $(shapeArea).val(`Area: ${sqrSide * sqrSide}`)
+    $(shapePerimeter).val(`Perimeter: ${sqrSide * 4}`)
 })
 
 const rctBtn = $('#rct-btn')
@@ -95,6 +108,12 @@ rctBtn.click(() => {
         console.log('rct button clicked')
         console.log(rct)
     }
+    $(shapeName).val('Shape: Rectangle')
+    $(shapeHeight).val(`Height: ${rctHeight}`)
+    $(shapeWidth).val(`Width: ${rctWidth}`)
+    $(shapeRadius).val(`Radius: NaN`)
+    $(shapeArea).val(`Area: ${rctHeight * rctWidth}`)
+    $(shapePerimeter).val(`Perimeter: ${(rctHeight + rctWidth) * 2}`)
 })
 
 const cirBtn = $('#cir-btn')
@@ -109,6 +128,14 @@ cirBtn.click(() => {
         console.log('cir button clicked')
         console.log(cir)
     }
+    $(shapeName).val('Shape: Circle')
+    $(shapeHeight).val(`Height: ${cirRadius * 2}`)
+    $(shapeWidth).val(`Width: ${cirRadius * 2}`)
+    $(shapeRadius).val(`Radius: ${cirRadius}`)
+    let cirArea = Math.PI * cirRadius * cirRadius
+    $(shapeArea).val(`Area: ${cirArea.toFixed(2)}`)
+    let cirPerim = 2 * Math.PI * cirRadius
+    $(shapePerimeter).val(`Perimeter: ${cirPerim.toFixed(2)}`)
 })
 
 const triBtn = $('#tri-btn')
@@ -123,6 +150,13 @@ triBtn.click(() => {
         console.log('tri button clicked')
         console.log(tri)
     }
+    $(shapeName).val('Shape: Triangle')
+    $(shapeHeight).val(`Height: ${triHeight}`)
+    $(shapeWidth).val(`Width: ${triHeight}`)
+    $(shapeRadius).val(`Radius: NaN`)
+    $(shapeArea).val(`Area: ${(triHeight * triHeight) / 2}`)
+    let triPerim = (triHeight * 2) + (Math.sqrt(triHeight * triHeight * 2))
+    $(shapePerimeter).val(`Perimeter: ${triPerim.toFixed(2)}`)
 })
 
 function randomVal(min, max) {
